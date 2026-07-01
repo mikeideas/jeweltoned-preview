@@ -10,17 +10,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-dark:    #0e0c09;
-      --bg-mid:     #161310;
-      --bg-cream:   #f5f0e6;
-      --gold:       #c4a45a;
-      --gold-light: #e2cb96;
-      --gold-dim:   rgba(196,164,90,0.18);
-      --ivory:      #f0ebe0;
-      --ivory-dim:  rgba(240,235,224,0.6);
+      --bg-dark:    #ffffff;
+      --bg-mid:     #f7f4ee;
+      --bg-cream:   #ede8da;
+      --gold:       #b09040;
+      --gold-light: #c4a45a;
+      --gold-dim:   rgba(176,144,64,0.1);
+      --ivory:      #1a1610;
+      --ivory-dim:  rgba(26,22,16,0.58);
       --text-dark:  #26221c;
       --emerald:    #1f3d32;
-      --border-gold: rgba(196,164,90,0.25);
+      --border-gold: rgba(176,144,64,0.22);
       --transition: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
     }
 
@@ -51,7 +51,7 @@
       transition: var(--transition);
     }
     nav.scrolled {
-      background: rgba(14,12,9,0.96);
+      background: rgba(255,255,255,0.97);
       backdrop-filter: blur(12px);
       padding: 18px 60px;
       border-bottom: 1px solid var(--border-gold);
@@ -822,8 +822,8 @@
       width: auto;
       max-width: 110px;
       object-fit: contain;
-      filter: brightness(0) invert(1);
-      opacity: 0.4;
+      filter: none;
+      opacity: 0.72;
       transition: opacity var(--transition);
     }
     .logo-item:hover img { opacity: 0.85; }
@@ -961,6 +961,35 @@
       .cta-duo { flex-direction: column; align-items: center; }
       .portfolio-header { flex-direction: column; gap: 20px; align-items: flex-start; }
     }
+
+    /* ── WHITE THEME OVERRIDES ── */
+    /* Nav always opaque white — black logo is visible from the start */
+    nav {
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid rgba(176,144,64,0.18);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+    }
+    nav.scrolled {
+      box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+    }
+    /* Hero text stays white — it sits over a dark photo overlay */
+    .hero h1 { color: #f0ebe0; }
+    .hero h1 em { color: #e2cb96; }
+    .hero-sub { color: rgba(240,235,224,0.72); }
+    .slide-project-label { color: rgba(240,235,224,0.65); }
+    /* Nav links default to dark (over white sections) */
+    .nav-links a { color: rgba(26,22,16,0.62); }
+    .nav-links a:hover { color: var(--gold); }
+    /* Keep btn-ghost readable in hero (over dark overlay) */
+    .hero .btn-ghost { color: rgba(240,235,224,0.85); border-color: rgba(240,235,224,0.45); }
+    .hero .btn-ghost:hover { background: rgba(240,235,224,0.12); color: #f0ebe0; border-color: rgba(240,235,224,0.7); }
+    /* Logo items: real logos, no invert */
+    .logo-item img { filter: none; opacity: 0.72; }
+    .logo-item:hover img { opacity: 1; filter: none; }
+    /* Section labels & stat numbers keep gold readable on white */
+    .stat-number { color: var(--gold); }
+    /* Scrollbar light */
+    ::-webkit-scrollbar-track { background: #f0ede6; }
   </style>
 </head>
 
@@ -969,7 +998,7 @@
 <!-- ======== NAV ======== -->
 <nav id="mainNav">
   <a class="nav-logo" href="https://jeweltoned.com">
-    <div class="nav-logo-text">JEWEL TONED<span>I N T E R I O R S</span></div>
+    <img src="https://cdn.prod.website-files.com/698335e71268878ff0944882/69bb1b7e6d410c5754f898d9_JTI-Logo.2025-Stacked.Black.avif" alt="Jewel Toned Interiors" style="height:40px;">
   </a>
   <ul class="nav-links">
     <li><a href="https://jeweltoned.com/about/">About</a></li>
@@ -1314,64 +1343,68 @@
   </div>
   <div class="marquee-outer">
     <div class="marquee-track">
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/broward-college.png" alt="Broward College"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/american-national-bank.png" alt="American National Bank"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/bk-logo.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/broward-partnership.png" alt="Broward Partnership"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/happy-floors-R2.png" alt="Happy Floors"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/marco-island.png" alt="Marco Island"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/datum-logo.png" alt="Datum"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/matrix-care.png" alt="MatrixCare"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/florida-palm-construction.png" alt="Florida Palm Construction"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/white-oak-logo.png" alt="White Oak"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/mcdowell-logo.png" alt="McDowell"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/oceanic.png" alt="Oceanic"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/Garmin-and-JLAudio-logos-400.png" alt="Garmin / JL Audio"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/jessie-trice.png" alt="Jessie Trice"></div>
-      <!-- Duplicate for loop -->
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/broward-college.png" alt="Broward College"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/american-national-bank.png" alt="American National Bank"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/bk-logo.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/broward-partnership.png" alt="Broward Partnership"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/happy-floors-R2.png" alt="Happy Floors"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/marco-island.png" alt="Marco Island"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/datum-logo.png" alt="Datum"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/matrix-care.png" alt="MatrixCare"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/florida-palm-construction.png" alt="Florida Palm Construction"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/white-oak-logo.png" alt="White Oak"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/mcdowell-logo.png" alt="McDowell"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/oceanic.png" alt="Oceanic"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/Garmin-and-JLAudio-logos-400.png" alt="Garmin / JL Audio"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/jessie-trice.png" alt="Jessie Trice"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7828b1a1dd948c6544a8_69f0554c25271d71eac9ead7_TS50_logo_2023.png" alt="TS50"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f054208b67d28a93e33d81_69d7972908360d9daec4e96b_69c5eeb216ba8752bd52bf48_cc-residential%20copy.avif" alt="CC Residential"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f05416e800529f90753516_69d797288e5477efd346c27f_69c5eeb3b2609177fb60bad0_15%20copy.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f0540a76295a2c44e7163f_69c5eeb3d6d392a257b5f0f5_10.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053fd8b67d28a93e33689_69d7951d1509e1752f734572_69c5eeb39f542d2f6770b26e_22.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053e410d9f7ff435f236e_69d79729ee918a83c5cb1670_69c5eeb311a9773c7816122e_21%20copy.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053d543438682fe6a5c38_69c5eeb39ce8a4f7ee935ede_4.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053bef5bef20cd324303c_69c5eeb311a9773c78161229_5.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7a9526903062de4ed269_69f053b582f4e40da7f9c756_69c5eeb3c30a67ebf3c17f4e_1-1.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053ab1a5121297387f2ff_69c5eeb3dc289f7052cf9b85_17.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f05374cab3b9e6656d88ae_69c5eeb3aa284e7e6819b503_9.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f05364f2d37ee0b83b924d_69c5eeb3199c8c951b8a28fc_19.webp" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f0535ac79613c2868fc833_69c5eeb24a0bd3a3383bdab4_16.webp" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7aa368be56a153289b98_69f053401f969067d0a59e98_69d7972954d38762c88590a1_69c5eeb2b2609177fb60bab2_12%20copy.png" alt="Client"></div>
+
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7828b1a1dd948c6544a8_69f0554c25271d71eac9ead7_TS50_logo_2023.png" alt="TS50"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f054208b67d28a93e33d81_69d7972908360d9daec4e96b_69c5eeb216ba8752bd52bf48_cc-residential%20copy.avif" alt="CC Residential"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f05416e800529f90753516_69d797288e5477efd346c27f_69c5eeb3b2609177fb60bad0_15%20copy.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f0540a76295a2c44e7163f_69c5eeb3d6d392a257b5f0f5_10.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053fd8b67d28a93e33689_69d7951d1509e1752f734572_69c5eeb39f542d2f6770b26e_22.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053e410d9f7ff435f236e_69d79729ee918a83c5cb1670_69c5eeb311a9773c7816122e_21%20copy.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053d543438682fe6a5c38_69c5eeb39ce8a4f7ee935ede_4.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053bef5bef20cd324303c_69c5eeb311a9773c78161229_5.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7a9526903062de4ed269_69f053b582f4e40da7f9c756_69c5eeb3c30a67ebf3c17f4e_1-1.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f053ab1a5121297387f2ff_69c5eeb3dc289f7052cf9b85_17.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f05374cab3b9e6656d88ae_69c5eeb3aa284e7e6819b503_9.avif" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f05364f2d37ee0b83b924d_69c5eeb3199c8c951b8a28fc_19.webp" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f0535ac79613c2868fc833_69c5eeb24a0bd3a3383bdab4_16.webp" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7aa368be56a153289b98_69f053401f969067d0a59e98_69d7972954d38762c88590a1_69c5eeb2b2609177fb60bab2_12%20copy.png" alt="Client"></div>
     </div>
   </div>
   <div class="marquee-outer" style="margin-top:0;">
     <div class="marquee-track-r">
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/akbscc-logo.png" alt="AKBSCC"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/cable-and-wireless.png" alt="Cable & Wireless"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/mjh-logo.png" alt="MJH"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/cc-residential.png" alt="CC Residential"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/recom-logo.png" alt="Recom"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/speedy-concrete.png" alt="Speedy Concrete"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/2.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/6.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/11.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/16.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/8.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/12.png" alt="Client"></div>
-      <!-- Duplicate for loop -->
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/akbscc-logo.png" alt="AKBSCC"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/cable-and-wireless.png" alt="Cable & Wireless"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/mjh-logo.png" alt="MJH"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/cc-residential.png" alt="CC Residential"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/recom-logo.png" alt="Recom"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/speedy-concrete.png" alt="Speedy Concrete"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/2.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/6.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/11.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/16.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/8.png" alt="Client"></div>
-      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/12.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7ab3af40c2a0475e0410_69f052ff13af0a21159a92c9_69c5eeb2d4433e08fa60b580_11.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f052f3afc0464416571cd5_69d797294daba0390f67ecd7_69c5eeb21d5847679edebbc4_cable-and-wireless%20copy.webp" alt="Cable & Wireless"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f052e53505de7f3d16e76a_69c5eeb2240fbd4f15621718_oceanic.webp" alt="Oceanic"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7abf2aacc83bb4aa2578_69f052dc95f4e497ccaff48d_69c5eeb2c99e39dc53e2b3ab_speedy-concrete.png" alt="Speedy Concrete"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f052bde670d1da80176b2e_69c5eeb2f1fcca8ecca4fb43_american-national-bank.webp" alt="American National Bank"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7afbffc8a6262a970c29_69f052862bcb5a3f34e6792e_69c5eeb2b3f98997ba277257_6.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f0527bcca22c5af18a56e6_69c5eeb3318a949bffe520a4_13.webp" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7a85341122cee35d2f7d_69f04e3258ff1ad7cb070dc5_XpeditedHealth-MainLogo-FullColor%202.png" alt="XpeditedHealth"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f04e26a5016042281f62dd_DATM%20Logos-05.png" alt="DATM"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c78523c9975666a2cdfe1_69f04e197f78d7018704caa1_InVictus_Logo_Color_Final%202.png" alt="InVictus"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7b775a5a0e824003c346_69f04df584f2e7680e969c78_pinnacle-logo%202.png" alt="Pinnacle"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c786ff8b8807578f62e90_69f04de486f085486d0aceec_logo.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7861cce2567ad515e183_69f04d439dd2e4f9fb7c9e04_dbi-logo%202.png" alt="DBI"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f04d261439248b37a3497c_Monat-Logo.png" alt="Monat"></div>
+
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7ab3af40c2a0475e0410_69f052ff13af0a21159a92c9_69c5eeb2d4433e08fa60b580_11.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f052f3afc0464416571cd5_69d797294daba0390f67ecd7_69c5eeb21d5847679edebbc4_cable-and-wireless%20copy.webp" alt="Cable & Wireless"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f052e53505de7f3d16e76a_69c5eeb2240fbd4f15621718_oceanic.webp" alt="Oceanic"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7abf2aacc83bb4aa2578_69f052dc95f4e497ccaff48d_69c5eeb2c99e39dc53e2b3ab_speedy-concrete.png" alt="Speedy Concrete"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f052bde670d1da80176b2e_69c5eeb2f1fcca8ecca4fb43_american-national-bank.webp" alt="American National Bank"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7afbffc8a6262a970c29_69f052862bcb5a3f34e6792e_69c5eeb2b3f98997ba277257_6.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f0527bcca22c5af18a56e6_69c5eeb3318a949bffe520a4_13.webp" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7a85341122cee35d2f7d_69f04e3258ff1ad7cb070dc5_XpeditedHealth-MainLogo-FullColor%202.png" alt="XpeditedHealth"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f04e26a5016042281f62dd_DATM%20Logos-05.png" alt="DATM"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c78523c9975666a2cdfe1_69f04e197f78d7018704caa1_InVictus_Logo_Color_Final%202.png" alt="InVictus"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7b775a5a0e824003c346_69f04df584f2e7680e969c78_pinnacle-logo%202.png" alt="Pinnacle"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c786ff8b8807578f62e90_69f04de486f085486d0aceec_logo.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/6a0c7861cce2567ad515e183_69f04d439dd2e4f9fb7c9e04_dbi-logo%202.png" alt="DBI"></div>
+      <div class="logo-item"><img src="https://cdn.prod.website-files.com/69bd3e59434237185d765cc7/69f04d261439248b37a3497c_Monat-Logo.png" alt="Monat"></div>
     </div>
   </div>
 </section>
@@ -1393,7 +1426,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="nav-logo-text" style="font-size:13px;">JEWEL TONED<span>I N T E R I O R S</span></div>
+      <img src="https://cdn.prod.website-files.com/698335e71268878ff0944882/69bb1b7e6d410c5754f898d9_JTI-Logo.2025-Stacked.Black.avif" alt="Jewel Toned Interiors" style="height:34px;">
       <p>Bespoke commercial interior design for South Florida's most ambitious businesses. Concept to completion, with integrity.</p>
     </div>
     <div class="footer-col">
