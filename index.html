@@ -970,8 +970,9 @@
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
     }
-    .nav-links { justify-content: flex-start; }
-    .nav-logo { justify-self: center; }
+    .nav-logo { grid-column: 2; justify-self: center; }
+    .nav-logo img { height: 54px !important; width: auto; }
+    .nav-links { grid-column: 3; justify-content: flex-end; }
     nav {
       background: rgba(255,255,255,0.97);
       border-bottom: 1px solid rgba(176,144,64,0.18);
