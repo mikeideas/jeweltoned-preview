@@ -57,6 +57,18 @@
       border-bottom: 1px solid var(--border-gold);
     }
     .nav-logo img { height: 38px; }
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ivory);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      line-height: 1.3;
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-logo-text span { font-size: 9px; letter-spacing: 0.55em; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -855,15 +867,16 @@
       border: 1px solid var(--border-gold);
       pointer-events: none;
     }
-    .final-cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .final-cta-inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
     .final-cta .section-label { justify-content: center; }
     .final-cta h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(42px, 6vw, 80px);
+      font-size: clamp(32px, 4vw, 58px);
       font-weight: 300;
-      line-height: 1.1;
+      line-height: 1.15;
       color: var(--ivory);
       margin-bottom: 24px;
+      white-space: nowrap;
     }
     .final-cta h2 em { font-style: italic; color: var(--gold-light); }
     .final-cta p { font-size: 15px; color: var(--ivory-dim); line-height: 1.8; margin-bottom: 48px; }
@@ -956,7 +969,7 @@
 <!-- ======== NAV ======== -->
 <nav id="mainNav">
   <a class="nav-logo" href="https://jeweltoned.com">
-    <img src="https://jeweltoned.com/wp-content/uploads/2025/07/JTI-Logo.2025-Linear.White_.png" alt="Jewel Toned Interiors">
+    <div class="nav-logo-text">JEWEL TONED<span>I N T E R I O R S</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="https://jeweltoned.com/about/">About</a></li>
@@ -1380,7 +1393,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="https://jeweltoned.com/wp-content/uploads/2025/07/JTI-Logo.2025-Linear.White_.png" alt="Jewel Toned Interiors">
+      <div class="nav-logo-text" style="font-size:13px;">JEWEL TONED<span>I N T E R I O R S</span></div>
       <p>Bespoke commercial interior design for South Florida's most ambitious businesses. Concept to completion, with integrity.</p>
     </div>
     <div class="footer-col">
