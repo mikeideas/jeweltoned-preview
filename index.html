@@ -1,1 +1,1589 @@
-placeholder
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewel Toned Interiors — Bespoke Commercial Design, South Florida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark:    #0e0c09;
+      --bg-mid:     #161310;
+      --bg-cream:   #f5f0e6;
+      --gold:       #c4a45a;
+      --gold-light: #e2cb96;
+      --gold-dim:   rgba(196,164,90,0.18);
+      --ivory:      #f0ebe0;
+      --ivory-dim:  rgba(240,235,224,0.6);
+      --text-dark:  #26221c;
+      --emerald:    #1f3d32;
+      --border-gold: rgba(196,164,90,0.25);
+      --transition: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--ivory);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 60px;
+      transition: var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(14,12,9,0.96);
+      backdrop-filter: blur(12px);
+      padding: 18px 60px;
+      border-bottom: 1px solid var(--border-gold);
+    }
+    .nav-logo img { height: 38px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--ivory-dim);
+      text-decoration: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      text-decoration: none;
+      font-size: 10px !important;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all var(--transition);
+    }
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--bg-dark) !important;
+    }
+
+    /* ── HERO SLIDER ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+
+    /* Slides */
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      will-change: opacity;
+    }
+    .slide.active { opacity: 1; z-index: 1; }
+    .slide.exiting { opacity: 0; z-index: 0; }
+
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.06);
+      transition: transform 8s ease-out;
+      will-change: transform;
+    }
+    .slide.active .slide-bg { transform: scale(1.0); }
+
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(14,12,9,0.2) 0%,
+        rgba(14,12,9,0.45) 50%,
+        rgba(14,12,9,0.88) 100%
+      );
+    }
+
+    /* Hero content */
+    .hero-content {
+      position: absolute;
+      bottom: 0; left: 0;
+      z-index: 10;
+      padding: 0 60px 90px;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -1px;
+      color: var(--ivory);
+      margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      color: var(--ivory-dim);
+      max-width: 460px;
+      margin-bottom: 42px;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 18px; align-items: center; }
+
+    /* Slide counter + project label */
+    .hero-meta {
+      position: absolute;
+      bottom: 90px;
+      right: 60px;
+      z-index: 10;
+      text-align: right;
+    }
+    .slide-project-label {
+      font-size: 11px;
+      color: var(--ivory-dim);
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+      transition: opacity 0.5s ease;
+    }
+    .slide-project-type {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Slider nav dots + progress */
+    .hero-nav {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(240,235,224,0.3);
+      cursor: pointer;
+      transition: all 0.4s ease;
+      border: none;
+      padding: 0;
+    }
+    .hero-dot.active {
+      background: var(--gold);
+      width: 28px;
+      border-radius: 2px;
+    }
+
+    /* Progress bar */
+    .hero-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--gold);
+      z-index: 10;
+      width: 0%;
+      transition: width linear;
+    }
+
+    /* Arrow buttons */
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(240,235,224,0.25);
+      background: rgba(14,12,9,0.35);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .hero-arrow:hover { border-color: var(--gold); background: rgba(196,164,90,0.15); }
+    .hero-arrow svg { width: 18px; height: 18px; fill: none; stroke: var(--ivory); stroke-width: 1.5; }
+    .hero-arrow-prev { left: 24px; }
+    .hero-arrow-next { right: 24px; }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 38px;
+      left: 60px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ivory-dim);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%,100% { opacity: 0.3; transform: scaleX(1); }
+      50% { opacity: 1; transform: scaleX(1.2); }
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 38px;
+      background: var(--gold);
+      color: var(--bg-dark);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-ghost {
+      display: inline-block;
+      padding: 16px 38px;
+      border: 1px solid rgba(240,235,224,0.35);
+      color: var(--ivory);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 120px 60px; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+    h2.editorial {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 5vw, 68px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+    h2.editorial em { font-style: italic; color: var(--gold-light); }
+    .divider { width: 60px; height: 1px; background: var(--gold); margin: 32px 0; }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy { background: var(--bg-mid); }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .philosophy-left p {
+      font-size: 16px;
+      color: var(--ivory-dim);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .philosophy-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .phi-item { border-top: 1px solid var(--border-gold); padding-top: 28px; }
+    .phi-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .phi-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .phi-item p { font-size: 13px; color: var(--ivory-dim); line-height: 1.7; }
+
+    /* ── PORTFOLIO ── */
+    .portfolio { background: var(--bg-dark); }
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Masonry-style editorial grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 320px 280px;
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .port-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    /* Layout assignments */
+    .port-item:nth-child(1) { grid-column: 1/6; grid-row: 1/2; }
+    .port-item:nth-child(2) { grid-column: 6/13; grid-row: 1/2; }
+    .port-item:nth-child(3) { grid-column: 1/5; grid-row: 2/3; }
+    .port-item:nth-child(4) { grid-column: 5/9; grid-row: 2/3; }
+    .port-item:nth-child(5) { grid-column: 9/13; grid-row: 2/3; }
+
+    .port-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .port-item:hover .port-bg { transform: scale(1.05); }
+    .port-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(14,12,9,0.82) 100%);
+      transition: background var(--transition);
+    }
+    .port-item:hover .port-overlay {
+      background: linear-gradient(180deg, rgba(14,12,9,0.1) 0%, rgba(14,12,9,0.88) 100%);
+    }
+    .port-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px;
+    }
+    .port-type {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    .port-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 1.2;
+    }
+    .port-meta {
+      font-size: 11px;
+      color: var(--ivory-dim);
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all var(--transition);
+    }
+    .port-item:hover .port-meta { opacity: 1; transform: translateY(0); }
+
+    /* ── DESIGN QUARTERLY ── */
+    .quarterly { background: var(--bg-mid); padding: 0; overflow: hidden; }
+    .quarterly-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 680px;
+    }
+    .quarterly-left {
+      background: var(--emerald);
+      padding: 90px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .quarterly-left::before {
+      content: '"';
+      position: absolute;
+      top: -20px; left: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 320px;
+      font-weight: 300;
+      color: rgba(196,164,90,0.06);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .quarterly-left::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(196,164,90,0.12);
+    }
+    .quarterly-tag {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .quarterly-tag::before {
+      content: '';
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--gold);
+    }
+    .quarterly-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ivory);
+      margin-bottom: 24px;
+    }
+    .quarterly-left h2 em { font-style: italic; color: var(--gold-light); }
+    .quarterly-left p {
+      font-size: 14px;
+      color: rgba(240,235,224,0.7);
+      line-height: 1.85;
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+    .quarterly-benefits {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+    .quarterly-benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 13px;
+      color: rgba(240,235,224,0.75);
+      line-height: 1.5;
+    }
+    .quarterly-benefits li::before {
+      content: '';
+      display: block;
+      width: 18px; height: 1px;
+      background: var(--gold);
+      margin-top: 10px;
+      flex-shrink: 0;
+    }
+    .quarterly-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(196,164,90,0.2);
+    }
+    .proof-avatars { display: flex; }
+    .proof-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--emerald);
+      background: var(--gold-dim);
+      margin-left: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      color: var(--gold);
+    }
+    .proof-avatar:first-child { margin-left: 0; }
+    .proof-text { font-size: 12px; color: var(--ivory-dim); line-height: 1.4; }
+    .proof-text strong { color: var(--gold); font-weight: 500; }
+
+    .quarterly-right {
+      background: var(--bg-dark);
+      padding: 90px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .quarterly-preview {
+      margin-bottom: 44px;
+      border: 1px solid var(--border-gold);
+      overflow: hidden;
+      position: relative;
+    }
+    .quarterly-preview img { width: 100%; display: block; opacity: 0.85; }
+    .preview-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--gold);
+      color: var(--bg-dark);
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+    }
+    .quarterly-form h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 10px;
+    }
+    .quarterly-form p {
+      font-size: 13px;
+      color: var(--ivory-dim);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .form-row { display: flex; gap: 0; }
+    .form-input {
+      flex: 1;
+      background: rgba(240,235,224,0.05);
+      border: 1px solid var(--border-gold);
+      border-right: none;
+      padding: 15px 20px;
+      color: var(--ivory);
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .form-input::placeholder { color: rgba(240,235,224,0.35); }
+    .form-input:focus { border-color: var(--gold); }
+    .form-submit {
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      color: var(--bg-dark);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 15px 26px;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .form-submit:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .form-fine { font-size: 11px; color: rgba(240,235,224,0.35); margin-top: 12px; }
+
+    /* ── PROCESS ── */
+    .process { background: var(--bg-cream); color: var(--text-dark); }
+    .process .section-label { color: #8a6f3a; }
+    .process .section-label::before { background: #8a6f3a; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(38,34,28,0.1);
+      margin-top: 64px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .step { background: var(--bg-cream); padding: 52px 44px; position: relative; }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 300;
+      color: rgba(196,164,90,0.2);
+      line-height: 1;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .step h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .step p { font-size: 14px; color: rgba(38,34,28,0.65); line-height: 1.75; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--bg-dark); overflow: hidden; }
+    .testimonials-track {
+      display: flex;
+      gap: 30px;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+      will-change: transform;
+    }
+    .testimonial {
+      flex: 0 0 520px;
+      border: 1px solid var(--border-gold);
+      padding: 50px 44px;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      line-height: 0.6;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 28px;
+      opacity: 0.6;
+    }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ivory);
+      margin-bottom: 32px;
+    }
+    .testimonial-author { border-top: 1px solid var(--border-gold); padding-top: 22px; }
+    .author-name {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-bottom: 4px;
+    }
+    .author-title { font-size: 12px; color: var(--gold); letter-spacing: 0.5px; }
+    .testimonials-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 50px;
+    }
+    .t-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--border-gold);
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+    }
+    .t-dot.active { background: var(--gold); width: 24px; border-radius: 3px; }
+
+    /* ── CLIENT LOGOS MARQUEE ── */
+    .clients { background: var(--bg-mid); padding: 80px 0; }
+    .clients-header { text-align: center; padding: 0 60px; margin-bottom: 56px; }
+    .clients-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 0;
+    }
+    .clients-label::before, .clients-label::after {
+      content: '';
+      display: block;
+      width: 60px; height: 1px;
+      background: var(--border-gold);
+    }
+    .marquee-outer {
+      overflow: hidden;
+      position: relative;
+      padding: 20px 0;
+    }
+    .marquee-outer::before, .marquee-outer::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-outer::before { left: 0; background: linear-gradient(to right, var(--bg-mid), transparent); }
+    .marquee-outer::after { right: 0; background: linear-gradient(to left, var(--bg-mid), transparent); }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 40s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 44px;
+      height: 60px;
+      border-right: 1px solid var(--border-gold);
+    }
+    .logo-item img {
+      height: 28px;
+      width: auto;
+      max-width: 110px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.4;
+      transition: opacity var(--transition);
+    }
+    .logo-item:hover img { opacity: 0.85; }
+    .marquee-track-r {
+      display: flex;
+      gap: 0;
+      animation: marqueeR 48s linear infinite;
+      width: max-content;
+      margin-top: 20px;
+    }
+    @keyframes marqueeR {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: var(--bg-dark);
+      padding: 160px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid var(--border-gold);
+      pointer-events: none;
+    }
+    .final-cta::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 1px solid var(--border-gold);
+      pointer-events: none;
+    }
+    .final-cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .final-cta .section-label { justify-content: center; }
+    .final-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ivory);
+      margin-bottom: 24px;
+    }
+    .final-cta h2 em { font-style: italic; color: var(--gold-light); }
+    .final-cta p { font-size: 15px; color: var(--ivory-dim); line-height: 1.8; margin-bottom: 48px; }
+    .cta-duo { display: flex; gap: 16px; justify-content: center; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-mid);
+      padding: 70px 60px 40px;
+      border-top: 1px solid var(--border-gold);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+    .footer-brand img { height: 30px; margin-bottom: 22px; opacity: 0.8; }
+    .footer-brand p { font-size: 13px; color: var(--ivory-dim); line-height: 1.75; max-width: 240px; }
+    .footer-col h5 {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: var(--ivory-dim); text-decoration: none; font-size: 13px; transition: color var(--transition); }
+    .footer-col ul a:hover { color: var(--ivory); }
+    .footer-contact p { font-size: 13px; color: var(--ivory-dim); line-height: 1.75; }
+    .footer-contact a { color: var(--gold); text-decoration: none; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 36px;
+      border-top: 1px solid var(--border-gold);
+    }
+    .footer-legal { font-size: 11px; color: rgba(240,235,224,0.3); }
+    .footer-legal a { color: rgba(240,235,224,0.4); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+    .footer-social { display: flex; gap: 18px; }
+    .footer-social a {
+      width: 34px; height: 34px;
+      border: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+    .footer-social a:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .footer-social svg { width: 14px; height: 14px; fill: var(--ivory-dim); }
+    .footer-social a:hover svg { fill: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav, nav.scrolled { padding: 20px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { padding: 0 24px 80px; }
+      .hero-scroll { display: none; }
+      .hero-meta { right: 24px; bottom: 80px; }
+      .hero-arrow { display: none; }
+      .philosophy-grid { grid-template-columns: 1fr; gap: 50px; }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 240px);
+      }
+      .port-item:nth-child(1),
+      .port-item:nth-child(2),
+      .port-item:nth-child(3),
+      .port-item:nth-child(4),
+      .port-item:nth-child(5) { grid-column: 1/-1; grid-row: auto; }
+      .quarterly-inner { grid-template-columns: 1fr; }
+      .quarterly-left, .quarterly-right { padding: 60px 24px; }
+      .process-steps { grid-template-columns: 1fr; }
+      .testimonial { flex: 0 0 88vw; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .final-cta { padding: 100px 24px; }
+      .cta-duo { flex-direction: column; align-items: center; }
+      .portfolio-header { flex-direction: column; gap: 20px; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ======== NAV ======== -->
+<nav id="mainNav">
+  <a class="nav-logo" href="https://jeweltoned.com">
+    <img src="https://jeweltoned.com/wp-content/uploads/2025/07/JTI-Logo.2025-Linear.White_.png" alt="Jewel Toned Interiors">
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://jeweltoned.com/about/">About</a></li>
+    <li><a href="https://jeweltoned.com/commercial-design/">Portfolio</a></li>
+    <li><a href="https://jeweltoned.com/our-process/">Our Process</a></li>
+    <li><a href="https://jeweltoned.com/blog/">Insights</a></li>
+    <li><a class="nav-cta" href="https://jeweltoned.com/contact-us">Book a Consultation</a></li>
+  </ul>
+</nav>
+
+<!-- ======== HERO SLIDER ======== -->
+<section class="hero" style="padding:0;">
+
+  <!-- Slide 1: Executive Reception -->
+  <div class="slide active">
+    <div class="slide-bg" style="background-image:url('./photo-09.jpg'), linear-gradient(135deg,#1a2535 0%,#0e0c09 100%); background-position: center 30%;"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 2: Restaurant with Bird Installation -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-02.jpg'), linear-gradient(135deg,#0d2a22 0%,#0e0c09 100%);"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 3: Cathedral Ceiling Office -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-08.jpg'), linear-gradient(135deg,#2a1f0e 0%,#0e0c09 100%); background-position: center 20%;"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 4: Amenity Lounge -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-01.jpg'), linear-gradient(135deg,#1a2535 0%,#0e0c09 100%);"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 5: Pool Deck -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-05.jpg'), linear-gradient(135deg,#0a1f2e 0%,#0e0c09 100%); background-position: center 60%;"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 6: DEIF Corporate Office -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-06.jpg'), linear-gradient(135deg,#0d2a22 0%,#0e0c09 100%);"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 7: Commercial Lounge -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-10.jpg'), linear-gradient(135deg,#2a1a0e 0%,#0e0c09 100%);"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 8: Casa Playa Restaurant -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-04.jpg'), linear-gradient(135deg,#1a2520 0%,#0e0c09 100%);"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 9: Design Studio -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-07.jpg'), linear-gradient(135deg,#1a1a1a 0%,#0e0c09 100%);"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Slide 10: Icy-N-Spicy -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('./photo-03.jpg'), linear-gradient(135deg,#2a1a2a 0%,#0e0c09 100%);"></div>
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Static content -->
+  <div class="hero-content">
+    <p class="hero-eyebrow">Bespoke Commercial Interiors, South Florida</p>
+    <h1>Spaces that<br><em>command</em><br>attention.</h1>
+    <p class="hero-sub">Your commercial environment is your most powerful brand asset. Jewel Toned Interiors transforms ordinary spaces into curated experiences that elevate perception, retention, and revenue.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://jeweltoned.com/contact-us">Book a Consultation</a>
+      <a class="btn-ghost" href="https://jeweltoned.com/commercial-design/">View Our Work</a>
+    </div>
+  </div>
+
+  <!-- Slide project label (updated by JS) -->
+  <div class="hero-meta">
+    <p class="slide-project-label" id="slideLabel">Executive Reception + Boardroom</p>
+    <p class="slide-project-type" id="slideType">Corporate Office</p>
+  </div>
+
+  <!-- Arrows -->
+  <button class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+
+  <!-- Dots -->
+  <div class="hero-nav" id="heroNav"></div>
+
+  <!-- Progress bar -->
+  <div class="hero-progress" id="heroProgress"></div>
+
+  <!-- Scroll hint -->
+  <span class="hero-scroll">Explore</span>
+</section>
+
+<!-- ======== PHILOSOPHY ======== -->
+<section class="philosophy">
+  <div class="philosophy-grid">
+    <div class="philosophy-left">
+      <p class="section-label">Our Approach</p>
+      <h2 class="editorial">Design is not decoration.<br>It is <em>strategy.</em></h2>
+      <div class="divider"></div>
+      <p>We partner with ambitious business owners who understand that a premium space is not an expense. It is a competitive edge. Every decision we make is grounded in how it will shape the experience of the people who walk through your doors.</p>
+      <p>Based in Fort Lauderdale and serving clients throughout South Florida, Jewel Toned Interiors has delivered transformative commercial environments for over a decade. Our process is rigorous, our eye is precise, and our commitment to your vision is absolute.</p>
+      <a class="btn-ghost" href="https://jeweltoned.com/about/" style="display:inline-block; margin-top:28px;">Our Story</a>
+    </div>
+    <div class="philosophy-right">
+      <div class="phi-item">
+        <div class="phi-num">01</div>
+        <h4>Concept to Completion</h4>
+        <p>From the first sketch to the final installation, we manage every detail so you don't have to.</p>
+      </div>
+      <div class="phi-item">
+        <div class="phi-num">02</div>
+        <h4>Heard and Honored</h4>
+        <p>We do not impose an aesthetic. We draw out yours and elevate it with craft.</p>
+      </div>
+      <div class="phi-item">
+        <div class="phi-num">03</div>
+        <h4>Wellness-Driven</h4>
+        <p>Environments that support the people inside them perform better on every metric.</p>
+      </div>
+      <div class="phi-item">
+        <div class="phi-num">04</div>
+        <h4>Honest Partnership</h4>
+        <p>We give a damn. We do what we say. We tell you the truth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PORTFOLIO ======== -->
+<section class="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <p class="section-label">Selected Work</p>
+      <h2 class="editorial">Interiors built<br>to <em>impress.</em></h2>
+    </div>
+    <a class="btn-ghost" href="https://jeweltoned.com/commercial-design/">View Full Portfolio</a>
+  </div>
+  <div class="portfolio-grid">
+
+    <div class="port-item">
+      <div class="port-bg" style="background-image:url('./photo-09.jpg'), linear-gradient(135deg,#1a2535 0%,#0e0c09 100%); background-position: center 30%;"></div>
+      <div class="port-overlay"></div>
+      <div class="port-info">
+        <p class="port-type">Corporate Office</p>
+        <h3 class="port-title">Executive Reception<br>+ Boardroom</h3>
+        <p class="port-meta">Walnut millwork &bull; Custom art &bull; Full fitout</p>
+      </div>
+    </div>
+
+    <div class="port-item">
+      <div class="port-bg" style="background-image:url('./photo-02.jpg'), linear-gradient(135deg,#0d2a22 0%,#0e0c09 100%);"></div>
+      <div class="port-overlay"></div>
+      <div class="port-info">
+        <p class="port-type">Restaurant + Hospitality</p>
+        <h3 class="port-title">Private Dining<br>South Florida</h3>
+        <p class="port-meta">Teal grasscloth &bull; Sculptural ceiling &bull; Custom lighting</p>
+      </div>
+    </div>
+
+    <div class="port-item">
+      <div class="port-bg" style="background-image:url('./photo-08.jpg'), linear-gradient(135deg,#2a1f0e 0%,#0e0c09 100%); background-position: center 20%;"></div>
+      <div class="port-overlay"></div>
+      <div class="port-info">
+        <p class="port-type">Corporate Campus</p>
+        <h3 class="port-title">Open Workspace<br>Timber Ceiling</h3>
+        <p class="port-meta">Space planning &bull; Furnishings &bull; Flooring design</p>
+      </div>
+    </div>
+
+    <div class="port-item">
+      <div class="port-bg" style="background-image:url('./photo-06.jpg'), linear-gradient(135deg,#0d2a22 0%,#0e0c09 100%);"></div>
+      <div class="port-overlay"></div>
+      <div class="port-info">
+        <p class="port-type">Corporate Office</p>
+        <h3 class="port-title">DEIF Inc.<br>Fort Lauderdale</h3>
+        <p class="port-meta">Brand environment &bull; Custom seating &bull; Biophilic design</p>
+      </div>
+    </div>
+
+    <div class="port-item">
+      <div class="port-bg" style="background-image:url('./photo-10.jpg'), linear-gradient(135deg,#2a1a0e 0%,#0e0c09 100%);"></div>
+      <div class="port-overlay"></div>
+      <div class="port-info">
+        <p class="port-type">Commercial Lounge</p>
+        <h3 class="port-title">Mid-Century<br>Office Lounge</h3>
+        <p class="port-meta">Decorative screen &bull; Leather &bull; Custom millwork</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== THE DESIGN QUARTERLY ======== -->
+<section class="quarterly">
+  <div class="quarterly-inner">
+    <div class="quarterly-left">
+      <p class="quarterly-tag">The Design Quarterly</p>
+      <h2>Exclusive design intelligence,<br><em>four times a year.</em></h2>
+      <p>Join the business owners and principals who refuse to leave their brand environment to chance. Each edition delivers curated insights on commercial design, emerging aesthetics, and the strategic decisions that separate premium spaces from forgettable ones.</p>
+      <ul class="quarterly-benefits">
+        <li>Trend forecasts tailored to commercial interiors, not residential theory</li>
+        <li>Before-and-after case studies with the reasoning behind every choice</li>
+        <li>Color, material, and texture guidance you can act on immediately</li>
+        <li>Early access to JTI events, exclusive resources, and our annual Gemzine</li>
+      </ul>
+      <div class="quarterly-social-proof">
+        <div class="proof-avatars">
+          <div class="proof-avatar">T</div>
+          <div class="proof-avatar">D</div>
+          <div class="proof-avatar">J</div>
+          <div class="proof-avatar">R</div>
+        </div>
+        <p class="proof-text">Trusted by <strong>South Florida's most discerning</strong><br>business owners and developers.</p>
+      </div>
+    </div>
+    <div class="quarterly-right">
+      <div class="quarterly-preview">
+        <img src="https://jeweltoned.com/wp-content/uploads/2026/03/facets-2026.jpg" alt="The Design Quarterly — Facets 2026">
+        <span class="preview-badge">Current Issue</span>
+      </div>
+      <div class="quarterly-form">
+        <h3>Reserve your subscription.</h3>
+        <p>Complimentary. Quarterly. Curated for commercial spaces. Delivered directly to your inbox.</p>
+        <form action="https://jeweltoned.us12.list-manage.com/subscribe/post" method="POST" target="_blank">
+          <input type="hidden" name="u" value="f94a13557402f01bc0cb7a37c">
+          <input type="hidden" name="id" value="2efa107d1c">
+          <div class="form-row">
+            <input class="form-input" type="email" name="EMAIL" placeholder="Your email address" required>
+            <button class="form-submit" type="submit">Subscribe</button>
+          </div>
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_f94a13557402f01bc0cb7a37c_2efa107d1c" tabindex="-1" value="">
+          </div>
+        </form>
+        <p class="form-fine">No spam, ever. One issue per quarter. Unsubscribe at any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PROCESS ======== -->
+<section class="process">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label" style="color:#8a6f3a;">Our Process</p>
+    <h2 class="editorial" style="color:var(--text-dark);">From vision to<br><em style="color:#8a6f3a;">a space that moves people.</em></h2>
+    <div class="process-steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Discovery Consultation</h4>
+        <p>We begin by listening. In your complimentary consultation, we explore your brand, your people, and the experience you want your space to create. No templates, no assumptions.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h4>Design Development</h4>
+        <p>Our team translates your vision into a cohesive design direction, presenting concepts with full material boards, spatial plans, and detailed specifications for your review and refinement.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h4>Seamless Execution</h4>
+        <p>We manage procurement, vendor relationships, and installation with the precision of a conductor. You receive a stunning finished space, on time and on budget, without the stress.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:52px;">
+      <a class="btn-primary" href="https://jeweltoned.com/our-process/" style="background:var(--text-dark); color:var(--bg-cream);">Explore the Full Process</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TESTIMONIALS ======== -->
+<section class="testimonials">
+  <p class="section-label">Radiant Reviews</p>
+  <h2 class="editorial" style="margin-bottom:60px;">What our clients <em>say.</em></h2>
+  <div style="overflow:hidden;">
+    <div class="testimonials-track" id="testimonialTrack">
+      <div class="testimonial">
+        <p class="testimonial-text">"JTI exceeded all our expectations, creating a space that truly reflects the vision we had in mind. Everyone who walks in can't help but say, 'Wow!' This space has become a pleasure to work in. Uplifting, cohesive, and impossible to leave."</p>
+        <div class="testimonial-author">
+          <p class="author-name">Jesse Davila</p>
+          <p class="author-title">Managing Director, DEIF Inc.</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"The best thing about working with JTI is that they're such an open book. They give us such great feedback on our thoughts and ideas that it creates such a vision."</p>
+        <div class="testimonial-author">
+          <p class="author-name">Diana Mansur</p>
+          <p class="author-title">Development Associate, Green Mills Group</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"When we use Joy and Jewel Toned Interiors, we will get exactly, actually more than what we bargained for. More than what we expect."</p>
+        <div class="testimonial-author">
+          <p class="author-name">Rob & Maureen Kornahrens</p>
+          <p class="author-title">Founder & President, Advanced Roofing Inc.</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"The product came out far beyond our expectations. They were great to work with, and the final space speaks for itself."</p>
+        <div class="testimonial-author">
+          <p class="author-name">Tom Walsh</p>
+          <p class="author-title">President & CEO, JJW Construction</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"They really understand the end product and end user and try to match that with your budget, but they have their own unique style. Pleasantly sharp."</p>
+        <div class="testimonial-author">
+          <p class="author-name">Ahmed Martin</p>
+          <p class="author-title">Principal, Urban Civic Group</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">"Very creative team that works with integrity!"</p>
+        <div class="testimonial-author">
+          <p class="author-name">Kelly Townsend</p>
+          <p class="author-title">Townsend Consulting Group</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="testimonials-nav" id="testimonialNav"></div>
+</section>
+
+<!-- ======== CLIENT LOGOS MARQUEE ======== -->
+<section class="clients">
+  <div class="clients-header">
+    <p class="clients-label">Trusted By</p>
+  </div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/broward-college.png" alt="Broward College"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/american-national-bank.png" alt="American National Bank"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/bk-logo.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/broward-partnership.png" alt="Broward Partnership"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/happy-floors-R2.png" alt="Happy Floors"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/marco-island.png" alt="Marco Island"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/datum-logo.png" alt="Datum"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/matrix-care.png" alt="MatrixCare"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/florida-palm-construction.png" alt="Florida Palm Construction"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/white-oak-logo.png" alt="White Oak"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/mcdowell-logo.png" alt="McDowell"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/oceanic.png" alt="Oceanic"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/Garmin-and-JLAudio-logos-400.png" alt="Garmin / JL Audio"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/jessie-trice.png" alt="Jessie Trice"></div>
+      <!-- Duplicate for loop -->
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/broward-college.png" alt="Broward College"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/american-national-bank.png" alt="American National Bank"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/bk-logo.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/broward-partnership.png" alt="Broward Partnership"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/happy-floors-R2.png" alt="Happy Floors"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/marco-island.png" alt="Marco Island"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/datum-logo.png" alt="Datum"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/matrix-care.png" alt="MatrixCare"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/florida-palm-construction.png" alt="Florida Palm Construction"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/white-oak-logo.png" alt="White Oak"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/mcdowell-logo.png" alt="McDowell"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/oceanic.png" alt="Oceanic"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/Garmin-and-JLAudio-logos-400.png" alt="Garmin / JL Audio"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/jessie-trice.png" alt="Jessie Trice"></div>
+    </div>
+  </div>
+  <div class="marquee-outer" style="margin-top:0;">
+    <div class="marquee-track-r">
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/akbscc-logo.png" alt="AKBSCC"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/cable-and-wireless.png" alt="Cable & Wireless"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/mjh-logo.png" alt="MJH"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/cc-residential.png" alt="CC Residential"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/recom-logo.png" alt="Recom"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/speedy-concrete.png" alt="Speedy Concrete"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/2.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/6.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/11.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/16.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/8.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/12.png" alt="Client"></div>
+      <!-- Duplicate for loop -->
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/akbscc-logo.png" alt="AKBSCC"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/cable-and-wireless.png" alt="Cable & Wireless"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/mjh-logo.png" alt="MJH"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/cc-residential.png" alt="CC Residential"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2024/03/recom-logo.png" alt="Recom"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/06/speedy-concrete.png" alt="Speedy Concrete"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/2.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/6.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/11.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/16.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/8.png" alt="Client"></div>
+      <div class="logo-item"><img src="https://jeweltoned.com/wp-content/uploads/2020/05/12.png" alt="Client"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FINAL CTA ======== -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <p class="section-label" style="justify-content:center;">Begin Here</p>
+    <h2>Your space tells a story.<br>Let's make it <em>the right one.</em></h2>
+    <p>Every exceptional commercial environment starts with a single conversation. We offer a complimentary consultation, no obligation, no pressure. Just an honest exchange about what your space could become.</p>
+    <div class="cta-duo">
+      <a class="btn-primary" href="https://jeweltoned.com/contact-us">Book Your Consultation</a>
+      <a class="btn-ghost" href="tel:9547749565">Call 954-774-9565</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://jeweltoned.com/wp-content/uploads/2025/07/JTI-Logo.2025-Linear.White_.png" alt="Jewel Toned Interiors">
+      <p>Bespoke commercial interior design for South Florida's most ambitious businesses. Concept to completion, with integrity.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="https://jeweltoned.com/about/">About JTI</a></li>
+        <li><a href="https://jeweltoned.com/meet-the-gems/">Meet the Gems</a></li>
+        <li><a href="https://jeweltoned.com/commercial-design/">Portfolio</a></li>
+        <li><a href="https://jeweltoned.com/our-process/">Our Process</a></li>
+        <li><a href="https://jeweltoned.com/blog/">Insights</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Work With Us</h5>
+      <ul>
+        <li><a href="https://jeweltoned.com/contact-us">Free Consultation</a></li>
+        <li><a href="https://jeweltoned.com/accolades/">Newsroom</a></li>
+        <li><a href="https://jeweltoned.com/radiant-reviews/">Reviews</a></li>
+        <li><a href="https://jeweltoned.com/social-impact/">Social Impact</a></li>
+        <li><a href="https://jeweltoned.com/art-rocks/">Art Rocks!</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h5>Contact</h5>
+      <p>
+        3323 W. Commercial Blvd.<br>Suite E220<br>Fort Lauderdale, FL 33309<br><br>
+        <a href="tel:9547749565">954-774-9565</a><br>
+        <a href="mailto:info@jeweltoned.com">info@jeweltoned.com</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">
+      &copy; 2026 Jewel Toned Interiors. All rights reserved.
+      &nbsp;&bull;&nbsp;
+      <a href="https://jeweltoned.com/privacy-policy-2/">Privacy Policy</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://jeweltoned.com/terms-conditions/">Terms</a>
+    </p>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/jeweltonedinteriors" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/jewel-toned-interiors/" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/jtidesignstudio" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.pinterest.com/jtidesignstudio/" aria-label="Pinterest">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Nav scroll ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── HERO SLIDER ──
+  const slides = document.querySelectorAll('.slide');
+  const heroNav = document.getElementById('heroNav');
+  const heroProgress = document.getElementById('heroProgress');
+  const slideLabel = document.getElementById('slideLabel');
+  const slideType = document.getElementById('slideType');
+  const SLIDE_DURATION = 7000;
+
+  const slideData = [
+    { label: 'Executive Reception + Boardroom', type: 'Corporate Office' },
+    { label: 'Private Dining, South Florida', type: 'Restaurant & Hospitality' },
+    { label: 'Corporate Campus, Timber Ceiling', type: 'Open Office' },
+    { label: 'Residential Amenity Club', type: 'Multifamily' },
+    { label: 'Resort-Style Pool Deck', type: 'Luxury Residential' },
+    { label: 'DEIF Inc., Fort Lauderdale', type: 'Corporate Office' },
+    { label: 'Mid-Century Commercial Lounge', type: 'Office Buildout' },
+    { label: 'Casa Playa Restaurant + Bar', type: 'Coastal Dining' },
+    { label: 'Design Studio, South Florida', type: 'Creative Office' },
+    { label: 'Icy-N-Spicy, Brand Environment', type: 'Retail & Dining' },
+  ];
+
+  let currentSlide = 0;
+  let heroTimer;
+  let progressInterval;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', () => goToSlide(i));
+    heroNav.appendChild(dot);
+  });
+
+  function updateDots(index) {
+    heroNav.querySelectorAll('.hero-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === index);
+    });
+  }
+
+  function updateLabel(index) {
+    slideLabel.style.opacity = '0';
+    slideType.style.opacity = '0';
+    setTimeout(() => {
+      slideLabel.textContent = slideData[index].label;
+      slideType.textContent = slideData[index].type;
+      slideLabel.style.opacity = '1';
+      slideType.style.opacity = '1';
+    }, 300);
+  }
+
+  function startProgress() {
+    clearInterval(progressInterval);
+    heroProgress.style.transition = 'none';
+    heroProgress.style.width = '0%';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        heroProgress.style.transition = `width ${SLIDE_DURATION}ms linear`;
+        heroProgress.style.width = '100%';
+      });
+    });
+  }
+
+  function goToSlide(index) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (index + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    updateDots(currentSlide);
+    updateLabel(currentSlide);
+    clearTimeout(heroTimer);
+    startProgress();
+    heroTimer = setTimeout(nextSlide, SLIDE_DURATION);
+  }
+
+  function nextSlide() { goToSlide(currentSlide + 1); }
+
+  document.getElementById('heroNext').addEventListener('click', () => goToSlide(currentSlide + 1));
+  document.getElementById('heroPrev').addEventListener('click', () => goToSlide(currentSlide - 1));
+
+  // Touch swipe on hero
+  let heroStartX = 0;
+  document.querySelector('.hero').addEventListener('touchstart', e => { heroStartX = e.touches[0].clientX; }, { passive: true });
+  document.querySelector('.hero').addEventListener('touchend', e => {
+    const diff = heroStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? goToSlide(currentSlide + 1) : goToSlide(currentSlide - 1);
+  }, { passive: true });
+
+  // Start
+  goToSlide(0);
+
+  // ── TESTIMONIALS SLIDER ──
+  const tTrack = document.getElementById('testimonialTrack');
+  const tNav = document.getElementById('testimonialNav');
+  const tItems = tTrack.querySelectorAll('.testimonial');
+  let tCurrent = 0;
+  let tAuto;
+
+  tItems.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 't-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Testimonial ${i + 1}`);
+    dot.addEventListener('click', () => tGoTo(i));
+    tNav.appendChild(dot);
+  });
+
+  function tGoTo(index) {
+    tCurrent = index;
+    const w = tItems[0].offsetWidth + 30;
+    tTrack.style.transform = `translateX(-${tCurrent * w}px)`;
+    tNav.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === tCurrent));
+  }
+
+  tAuto = setInterval(() => tGoTo((tCurrent + 1) % tItems.length), 5000);
+  tTrack.addEventListener('mouseenter', () => clearInterval(tAuto));
+  tTrack.addEventListener('mouseleave', () => { tAuto = setInterval(() => tGoTo((tCurrent + 1) % tItems.length), 5000); });
+
+  let tStartX = 0;
+  tTrack.addEventListener('touchstart', e => { tStartX = e.touches[0].clientX; }, { passive: true });
+  tTrack.addEventListener('touchend', e => {
+    const diff = tStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? tGoTo(Math.min(tCurrent + 1, tItems.length - 1)) : tGoTo(Math.max(tCurrent - 1, 0));
+  }, { passive: true });
+
+  // ── FADE-IN OBSERVER ──
+  const fadeEls = document.querySelectorAll('.phi-item, .step, .port-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(22px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
