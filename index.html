@@ -995,9 +995,15 @@
     /* Keep btn-ghost readable in hero (over dark overlay) */
     .hero .btn-ghost { color: rgba(240,235,224,0.85); border-color: rgba(240,235,224,0.45); }
     .hero .btn-ghost:hover { background: rgba(240,235,224,0.12); color: #f0ebe0; border-color: rgba(240,235,224,0.7); }
-    /* Logo marquee section: dark background so all logos (incl. white ones) are visible */
+    /* Quarterly left panel — dark emerald bg needs white text */
+    .quarterly-left h2 { color: #f0ebe0 !important; }
+    .quarterly-left h2 em { color: #c4a45a !important; }
+    .quarterly-left p { color: rgba(240,235,224,0.78) !important; }
+    .quarterly-benefits li { color: rgba(240,235,224,0.72) !important; }
+    .quarterly-benefits li::before { background: #c4a45a !important; }
+    /* Logo marquee section: dark emerald — cohesive with quarterly panel */
     .clients {
-      background: #1c1916 !important;
+      background: #1f3d32 !important;
     }
     .clients-label {
       color: rgba(196,164,90,0.7) !important;
@@ -1005,11 +1011,24 @@
     .clients-label::before, .clients-label::after {
       background: rgba(196,164,90,0.25) !important;
     }
-    .marquee-outer::before { background: linear-gradient(to right, #1c1916, transparent) !important; }
-    .marquee-outer::after  { background: linear-gradient(to left,  #1c1916, transparent) !important; }
-    /* Logo items: no filter — colored logos show on dark, white logos visible too */
-    .logo-item img { filter: none; opacity: 0.68; }
+    .marquee-outer::before { background: linear-gradient(to right, #1f3d32, transparent) !important; }
+    .marquee-outer::after  { background: linear-gradient(to left,  #1f3d32, transparent) !important; }
+    /* Logo items: no filter — colored logos show on green, white logos visible */
+    .logo-item img { filter: none; opacity: 0.72; }
     .logo-item:hover img { opacity: 1; filter: none; }
+    /* Post-logo sections: dark closing tone */
+    .final-cta { background: #231e17 !important; }
+    .final-cta h2 { color: #f0ebe0 !important; }
+    .final-cta h2 em { color: #c4a45a !important; }
+    .final-cta p { color: rgba(240,235,224,0.62) !important; }
+    .final-cta .section-label { color: rgba(196,164,90,0.7) !important; }
+    .final-cta .section-label::before { background: rgba(196,164,90,0.35) !important; }
+    footer { background: #1a1610 !important; border-top-color: rgba(196,164,90,0.15) !important; }
+    footer h5 { color: rgba(240,235,224,0.9) !important; }
+    footer p, footer a { color: rgba(240,235,224,0.58) !important; }
+    footer a:hover { color: #c4a45a !important; }
+    footer .footer-brand img { filter: brightness(0) invert(1) !important; opacity: 0.85; }
+    footer .footer-bottom { color: rgba(240,235,224,0.4) !important; border-top-color: rgba(196,164,90,0.12) !important; }
     /* Section labels & stat numbers keep gold readable on white */
     .stat-number { color: var(--gold); }
     /* Scrollbar light */
